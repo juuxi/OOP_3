@@ -1,5 +1,6 @@
 #include "application.h"
 #include "array.h"
+#include "polinom.h"
 #include <iostream>
 
 using namespace std;
@@ -27,6 +28,8 @@ int TApplication::exec()
 {
     int ch;
     TArray arr;
+    number std_roots[] = {3, -2, 1};
+    TPolinom pol(3, std_roots, 3);
     while (true)
     {
         ch = menu();
@@ -86,7 +89,7 @@ int TApplication::exec()
             }
            case 6:
             {
-                cout<<arr;
+                cout<<pol;
                 break;
             }
            default:

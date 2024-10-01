@@ -1,7 +1,6 @@
 #ifndef TAPPLICATION_H
 #define TAPPLICATION_H
 
-
 class TApplication
 {
 public:

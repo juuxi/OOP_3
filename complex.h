@@ -18,6 +18,7 @@ public:
 
     void operator+= (TComplex);
     TComplex operator- (TComplex);
+    TComplex operator- ();
     TComplex operator/ (int);
     TComplex operator* (TComplex);
 

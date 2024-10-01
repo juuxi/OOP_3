@@ -38,6 +38,16 @@ TComplex TComplex::operator- (TComplex c)
     return temp;
 }
 
+TComplex TComplex::operator- ()
+{
+    TComplex temp;
+    if (re)
+        temp.re = -re;
+    if (im)
+        temp.im = -im;
+    return temp;
+}
+
 TComplex TComplex::operator/ (int r)
 {
     TComplex temp;

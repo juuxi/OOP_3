@@ -12,7 +12,7 @@ SOURCES += \
         array.cpp \
         complex.cpp \
         main.cpp \
-        tpolinom.cpp
+        polinom.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -24,4 +24,4 @@ HEADERS += \
     array.h \
     complex.h \
     number.h \
-    tpolinom.h
+    polinom.h
