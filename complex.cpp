@@ -59,8 +59,14 @@ TComplex TComplex::operator/ (int r)
 TComplex TComplex::operator* (TComplex c)
 {
     TComplex temp;
-    temp.re = re * c.re - im * c.im;
-    temp.im = re * c.im - im * c.re;
+    if(re)
+        temp.re = re * c.re - im * c.im;
+    else
+        temp.re = 0;
+    if (im)
+        temp.im = re * c.im - im * c.re;
+    else
+        temp.im = 0;
     return temp;
 }
 

@@ -11,6 +11,7 @@ enum EPrintMode
 
 class TPolinom
 {
+    EPrintMode printMode;
     number* roots;
     number* coefficients;
     int N;
@@ -18,6 +19,7 @@ public:
     TPolinom();
     TPolinom(number, number*, int);
     friend ostream& operator<< (ostream&, TPolinom);
+    void set_print_mode (EPrintMode);
 private:
     void count_coefficients(number);
 };
