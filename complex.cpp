@@ -41,10 +41,10 @@ TComplex TComplex::operator- (TComplex c)
 TComplex TComplex::operator- ()
 {
     TComplex temp;
-    if (re)
-        temp.re = -re;
-    if (im)
-        temp.im = -im;
+    temp.re = -re;
+    if (temp.re == -0) temp.re = 0;
+    temp.im = -im;
+    if (temp.im == -0) temp.im = 0;
     return temp;
 }
 

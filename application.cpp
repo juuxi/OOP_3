@@ -14,7 +14,7 @@ int TApplication::menu()
 {
     int ch;
     cout << "1 - Ввод полинома" << endl;
-    cout << "2 - Расчет среднего и СКО элекментов массива" << endl;
+    cout << "2 - Изменить коэффициент a_n или один из корней" << endl;
     cout << "3 - Вычисление полинома в данной точке" << endl;
     cout << "4 - Изменение размера массива" << endl;
     cout << "5 - Изменение значения выбранного элемента массива" << endl;
@@ -28,7 +28,7 @@ int TApplication::exec()
 {
     int ch;
     TArray arr;
-    number std_roots[] = {3, -2, 1};
+    number std_roots[] = {3, 7, 1};
     TPolinom pol(3, std_roots, 3);
     while (true)
     {
@@ -52,8 +52,31 @@ int TApplication::exec()
             }
            case 2:
             {
-                cout<<"среднее значение - "<<arr.count_average()<<endl;
-                cout<<"СКО - "<<arr.count_average_square()<<endl;
+                int change_ch;
+                cout << "1 - Изменение a_n" << endl;
+                cout << "2 - Изменение корня" << endl;
+                cout << "> ";
+                cin >> change_ch;
+                if (change_ch == 1)
+                {
+                    number an;
+                    cout << "Введите новое значение" << endl;
+                    cout << "> ";
+                    cin >> an;
+                    pol.change_an(an);
+                }
+                if (change_ch == 2)
+                {
+                    number new_root;
+                    size_t index;
+                    cout << "Введите новое значение" << endl;
+                    cout << "> ";
+                    cin >> new_root;
+                    cout << "Введите позицию (индекс)" << endl;
+                    cout << "> ";
+                    cin >> index;
+                    pol.change_root(new_root, index);
+                }
                 break;
             }
            case 3:
@@ -89,6 +112,7 @@ int TApplication::exec()
                 int mode_ch;
                 cout << "1 - Канонический способ" << endl;
                 cout << "2 - Классический способ" << endl;
+                cout << "> ";
                 cin >> mode_ch;
                 if (mode_ch == 1)
                     pol.set_print_mode(EPrintModeCanonic);

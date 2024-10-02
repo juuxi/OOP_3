@@ -16,9 +16,6 @@ TPolinom::TPolinom(number _an, number* _roots, int _size)
     coefficients = new number[N + 1];
     for (int i = 0; i < N; i++)
         roots[i] = _roots[i];
-    for (int i = 0; i < N; i++)
-        coefficients[i] = 0;
-    coefficients[N] = _an;
     count_coefficients(_an);
     printMode = EPrintModeClassic;
 }
@@ -26,6 +23,12 @@ TPolinom::TPolinom(number _an, number* _roots, int _size)
 void TPolinom::count_coefficients (number _an)
 
 {
+    for (int i = 0; i < N; i++)
+        coefficients[i] = 0;
+    coefficients[N] = _an;
+    number& a = coefficients[0];
+    number& b = coefficients[1];
+    number& c = coefficients[2];
     coefficients[1] = 1;
     coefficients[0] = -roots[0];
     for (int k = 2; k <= N; k++)
@@ -68,4 +71,16 @@ number TPolinom::count_value (number _point)
     for (int i = 0; i < N; i++)
         val = (_point - roots[i]) * val;
     return val;
+}
+
+void TPolinom::change_an(number _an)
+{
+    coefficients[N] = _an;
+    count_coefficients(coefficients[N]);
+}
+
+void TPolinom::change_root(number _new_root, size_t _index)
+{
+    roots[_index] = _new_root;
+    count_coefficients(coefficients[N]);
 }

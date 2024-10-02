@@ -21,6 +21,8 @@ public:
     friend ostream& operator<< (ostream&, TPolinom);
     void set_print_mode (EPrintMode);
     number count_value (number);
+    void change_an (number);
+    void change_root (number, size_t);
 private:
     void count_coefficients(number);
 };
