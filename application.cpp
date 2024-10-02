@@ -13,9 +13,9 @@ TApplication::TApplication()
 int TApplication::menu()
 {
     int ch;
-    cout << "1 - Ввод значений массива" << endl;
+    cout << "1 - Ввод полинома" << endl;
     cout << "2 - Расчет среднего и СКО элекментов массива" << endl;
-    cout << "3 - Сортировка по возрастсанию/убыванию" << endl;
+    cout << "3 - Вычисление полинома в данной точке" << endl;
     cout << "4 - Изменение размера массива" << endl;
     cout << "5 - Изменение значения выбранного элемента массива" << endl;
     cout << "6 - Вывод полинома" << endl;
@@ -58,14 +58,11 @@ int TApplication::exec()
             }
            case 3:
             {
-                cout << "1 - По возрастанию" << endl;
-                cout << "2 - По убыванию" << endl;
-                int reverse;
-                cin>>reverse;
-                if (reverse == 1)
-                    arr.sort(false);
-                else
-                    arr.sort(true);
+                number point;
+                cout << "Введите значение, для которого Вы хотите вычислить полином" << std::endl;
+                cout << "> ";
+                cin >> point;
+                cout << pol.count_value(point) << endl;
                 break;
             }
            case 4:

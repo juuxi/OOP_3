@@ -1,4 +1,5 @@
 #include "polinom.h"
+#include <math.h>
 
 TPolinom::TPolinom()
 {
@@ -59,4 +60,12 @@ ostream& operator<< (ostream& os, TPolinom pol)
         os << "(x - " << pol.roots[pol.N - 1] << ")" << std::endl;
     }
     return os;
+}
+
+number TPolinom::count_value (number _point)
+{
+    number val = coefficients[N];
+    for (int i = 0; i < N; i++)
+        val = (_point - roots[i]) * val;
+    return val;
 }

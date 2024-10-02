@@ -20,6 +20,7 @@ public:
     TPolinom(number, number*, int);
     friend ostream& operator<< (ostream&, TPolinom);
     void set_print_mode (EPrintMode);
+    number count_value (number);
 private:
     void count_coefficients(number);
 };
