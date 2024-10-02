@@ -45,11 +45,18 @@ void TPolinom::set_print_mode (EPrintMode _printMode)
 
 ostream& operator<< (ostream& os, TPolinom pol)
 {
-    if (pol.printMode == EPrintModeClassic)
+    if (pol.printMode == EPrintModeCanonic)
     {
         for (int i = pol.N; i > 0; i--)
             os << pol.coefficients[i] << " x^" << i << " + ";
         os << pol.coefficients[0] << std::endl;
+    }
+    else
+    {
+        os << pol.coefficients[pol.N] << " * ";
+        for (int i = 0; i < pol.N - 1; i++)
+            os << "(x - " << pol.roots[i] << ") * ";
+        os << "(x - " << pol.roots[pol.N - 1] << ")" << std::endl;
     }
     return os;
 }

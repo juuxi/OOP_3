@@ -18,7 +18,7 @@ int TApplication::menu()
     cout << "3 - Сортировка по возрастсанию/убыванию" << endl;
     cout << "4 - Изменение размера массива" << endl;
     cout << "5 - Изменение значения выбранного элемента массива" << endl;
-    cout << "6 - Вывод элементов массива" << endl;
+    cout << "6 - Вывод полинома" << endl;
     cout << "0 - Выход" << endl << "> ";
     cin >> ch;
     return ch;
@@ -89,7 +89,15 @@ int TApplication::exec()
             }
            case 6:
             {
-                cout<<pol;
+                int mode_ch;
+                cout << "1 - Канонический способ" << endl;
+                cout << "2 - Классический способ" << endl;
+                cin >> mode_ch;
+                if (mode_ch == 1)
+                    pol.set_print_mode(EPrintModeCanonic);
+                if (mode_ch == 2)
+                    pol.set_print_mode(EPrintModeClassic);
+                cout << pol;
                 break;
             }
            default:
