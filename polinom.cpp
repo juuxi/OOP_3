@@ -65,6 +65,7 @@ istream& operator>> (istream& is, TPolinom& pol)
     is >> pol.coefficients[pol.N];
     for (int i = 0; i < pol.N; i++)
         is >> pol.roots[i];
+    pol.count_coefficients(pol.coefficients[pol.N]);
     return is;
 }
 
@@ -91,6 +92,6 @@ void TPolinom::change_root(number _new_root, size_t _index)
 void TPolinom::change_size(int new_size)
 {
     roots.change_size(new_size);
-    coefficients.change_size(new_size);
+    coefficients.change_size(new_size + 1);
     N = new_size;
 }

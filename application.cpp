@@ -16,9 +16,8 @@ int TApplication::menu()
     cout << "1 - Ввод полинома" << endl;
     cout << "2 - Изменить коэффициент a_n или один из корней" << endl;
     cout << "3 - Вычисление полинома в данной точке" << endl;
-    cout << "4 - Изменение размера массива" << endl;
-    cout << "5 - Изменение значения выбранного элемента массива" << endl;
-    cout << "6 - Вывод полинома" << endl;
+    cout << "4 - Изменение размера полинома" << endl;
+    cout << "5 - Вывод полинома" << endl;
     cout << "0 - Выход" << endl << "> ";
     cin >> ch;
     return ch;
@@ -89,21 +88,10 @@ int TApplication::exec()
                 cout << "Введите новый размер" << endl << "> ";
                 int num;
                 cin >> num;
-                arr.change_size(num);
+                pol.change_size(num);
                 break;
             }
            case 5:
-            {
-                cout << "Введите индекс" << endl << "> ";
-                int index;
-                number elem;
-                cin >> index;
-                cout << "Введите новое значение" << endl << "> ";
-                cin >> elem;
-                arr.change_element(index, elem);
-                break;
-            }
-           case 6:
             {
                 int mode_ch;
                 cout << "1 - Канонический способ" << endl;
