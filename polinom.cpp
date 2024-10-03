@@ -3,8 +3,6 @@
 
 TPolinom::TPolinom()
 {
-    roots = nullptr;
-    coefficients = nullptr;
     N = 0;
     printMode = EPrintModeClassic;
 }
@@ -12,8 +10,8 @@ TPolinom::TPolinom()
 TPolinom::TPolinom(number _an, number* _roots, int _size)
 {
     N = _size;
-    roots = new number[N];
-    coefficients = new number[N + 1];
+    roots.change_size(N);
+    coefficients.change_size(N+1);
     for (int i = 0; i < N; i++)
         roots[i] = _roots[i];
     count_coefficients(_an);
@@ -26,9 +24,6 @@ void TPolinom::count_coefficients (number _an)
     for (int i = 0; i < N; i++)
         coefficients[i] = 0;
     coefficients[N] = _an;
-    number& a = coefficients[0];
-    number& b = coefficients[1];
-    number& c = coefficients[2];
     coefficients[1] = 1;
     coefficients[0] = -roots[0];
     for (int k = 2; k <= N; k++)
@@ -47,7 +42,7 @@ void TPolinom::set_print_mode (EPrintMode _printMode)
     printMode = _printMode;
 }
 
-ostream& operator<< (ostream& os, TPolinom pol)
+ostream& operator<< (ostream& os, TPolinom& pol)
 {
     if (pol.printMode == EPrintModeCanonic)
     {
@@ -63,6 +58,14 @@ ostream& operator<< (ostream& os, TPolinom pol)
         os << "(x - " << pol.roots[pol.N - 1] << ")" << std::endl;
     }
     return os;
+}
+
+istream& operator>> (istream& is, TPolinom& pol)
+{
+    is >> pol.coefficients[pol.N];
+    for (int i = 0; i < pol.N; i++)
+        is >> pol.roots[i];
+    return is;
 }
 
 number TPolinom::count_value (number _point)
@@ -83,4 +86,11 @@ void TPolinom::change_root(number _new_root, size_t _index)
 {
     roots[_index] = _new_root;
     count_coefficients(coefficients[N]);
+}
+
+void TPolinom::change_size(int new_size)
+{
+    roots.change_size(new_size);
+    coefficients.change_size(new_size);
+    N = new_size;
 }

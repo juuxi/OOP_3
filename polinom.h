@@ -2,6 +2,7 @@
 #define POLINOM_H
 
 #include "number.h"
+#include "array.h"
 
 enum EPrintMode
 {
@@ -12,17 +13,19 @@ enum EPrintMode
 class TPolinom
 {
     EPrintMode printMode;
-    number* roots;
-    number* coefficients;
+    TArray roots;
+    TArray coefficients;
     int N;
 public:
     TPolinom();
     TPolinom(number, number*, int);
-    friend ostream& operator<< (ostream&, TPolinom);
+    friend ostream& operator<< (ostream&, TPolinom&);
+    friend istream& operator>> (istream&, TPolinom&);
     void set_print_mode (EPrintMode);
     number count_value (number);
     void change_an (number);
     void change_root (number, size_t);
+    void change_size (int);
 private:
     void count_coefficients(number);
 };

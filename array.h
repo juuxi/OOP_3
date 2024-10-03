@@ -15,6 +15,7 @@ public:
     TArray(int);
     friend istream& operator>> (istream&, TArray&);
     friend ostream& operator<< (ostream&, TArray&);
+    number& operator[](int);
     void change_size(int);
     number count_average();
     number count_average_square();

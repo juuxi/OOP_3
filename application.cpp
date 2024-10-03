@@ -41,13 +41,9 @@ int TApplication::exec()
             }
             case 1:
             {
-                if (arr.get_size() != 0)
-                {
-                    cout << "Введите элементы" << endl;
-                    cin>>arr;
-                }
-                else
-                    cout << "Массив пуст" << endl;
+                cout << "Введите a_n и корни" << endl;
+                cout << "> ";
+                cin >> pol;
                 break;
             }
            case 2:

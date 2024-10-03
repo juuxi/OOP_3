@@ -33,6 +33,11 @@ ostream& operator<< (ostream& os, TArray& a)
     return os;
 }
 
+number& TArray::operator[](int i)
+{
+    return arr[i];
+}
+
 void TArray::change_size(int new_size)
 {
     number* arr2 = new number[new_size];
@@ -115,5 +120,8 @@ int TArray::get_size()
 TArray::~TArray()
 {
     if(arr != nullptr)
+    {
         delete[] arr;
+        arr = nullptr;
+    }
 }
